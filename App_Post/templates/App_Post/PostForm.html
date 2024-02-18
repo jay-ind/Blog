@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container my-5">
+        <form method="POST" action="{% if form.instance.id %}{% url 'update_post' form.instance.id %}{% else %}{% url 'create_post' %}{% endif %}" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                        {{ form.title }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                        {{ form.description }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Current Thumbnail Image</label>
+                        {% if form.instance.thumbnail_image %}
+                            <p><a href="{{ form.instance.thumbnail_image.url }}" target="_blank" class="link-primary">View Image</a></p>
+                        {% else %}
+                                 <p>no Image Uploaded</p>
+                        {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Thumbnail Image</label>
+                        {{ form.thumbnail_image }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock content %}

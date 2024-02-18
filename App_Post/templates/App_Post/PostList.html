@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+  <div class="d-flex flex-wrap justify-content-start">
+    <!-- Card Begins from Here -->
+    {% for post in all_posts_data %}
+    <div class="card mb-3 mx-2" style="max-width: 550px;">
+      <div class="card-header text text-primary">
+        {{ post.owner.first_name }} {{ post.owner.last_name }}
+      </div>
+      <div class="row g-0">
+        <div class="col-md-6">
+          <img src="{{ post.thumbnail_image.url }}" class="img-fluid rounded-start">
+        </div>
+        <div class="col-md-6">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.description|truncatechars:75 }}</p>
+            <a href="{% url 'update_post' post.id %}" class="card-link link-warning">Edit</a>
+            <a href="{% url 'delete_post' post.id %}" class="card-link link-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text text-info">
+        {{ post.timestamp }}
+      </div>
+    </div>
+    {% endfor %}
+    <!-- Card End's Here -->
+  </div>
+</div>
+{% endblock content %}
