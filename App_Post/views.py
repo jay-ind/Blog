@@ -30,6 +30,12 @@ def CreatePost(request):
         return render(request, 'App_Post/PostForm.html', {'form': form})
 
 
+def ViewPost(request, id):
+    post = get_object_or_404(TblPost, pk=id)
+    print(post)
+    return render(request, 'App_Post/PostDetail.html', {'object': post})
+
+
 def UpdatePost(request, id):
     post = get_object_or_404(TblPost, pk=id)
 

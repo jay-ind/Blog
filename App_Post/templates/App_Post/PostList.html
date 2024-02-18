@@ -18,6 +18,7 @@
           <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.description|truncatechars:75 }}</p>
+            <a href="{% url 'view_post' post.id %}" class="card-link link-info">Read More</a>
             <a href="{% url 'update_post' post.id %}" class="card-link link-warning">Edit</a>
             <a href="{% url 'delete_post' post.id %}" class="card-link link-danger">Delete</a>
           </div>

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container my-5">
+      <div class="card mb-3">
+        <img src="{{ object.thumbnail_image.url }}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ object.title }}</h5>
+          <p class="card-text">{{ object.description }}</p>
+          <p class="card-text"><small class="text-body-secondary">{{ object.timestamp }}</small></p>
+        </div>
+      </div>
+  </div>
+
+{% endblock content %}
